@@ -1,4 +1,4 @@
-from token_data import TokenGroup, Token, TokenOrGroup, YAPIGroup
+from .token_data import TokenGroup, Token, TokenOrGroup, YAPIGroup
 
 
 class TokenGruppen:
@@ -8,7 +8,6 @@ class TokenGruppen:
 
         self.__all_end_tokens: list[Token] = []
         self.__walk(self.__all_end_tokens, self.group)
-
         pass
 
     def __walk(self, liste: list, gruppe: TokenOrGroup):

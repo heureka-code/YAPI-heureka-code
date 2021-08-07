@@ -70,17 +70,24 @@ class Token(TokenOrGroup):
         return self.extern_value
 
     def __copy__(self):
-        return Token(self.intern_name, self.extern_value)
+        t = Token(self.intern_name, self.extern_value)
+        t.parents = self.parents
+        return t
 
     def __eq__(self, other: "Token"):
-        return self.extern_value == other.extern_value and self.intern_name == other.intern_name
+        try:
+            return self.extern_value == other.extern_value and self.intern_name == other.intern_name
+        except AttributeError:
+            return None
 
     def __ne__(self, other: "Token"):
         return (self == other) is False
 
     @classmethod
     def from_copy(cls, o: "Token"):
-        return cls(o.intern_name, o.extern_value)
+        c = cls(o.intern_name, o.extern_value)
+        c.parents = o.parents
+        return c
 
     @property
     def intern_name(self):
