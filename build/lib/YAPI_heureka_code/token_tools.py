@@ -8,17 +8,23 @@ def find_inner(klasse, left: Token, tokens: list[Token], right: Token = None):
     groups: list[list[Token]] = []
     group: list[Token] = []
 
+    opened = False
+
     for token in tokens:
-        if token == left:
+        if token == left and (left != right or opened is False):
             groups.append([r.__copy__() for r in group])
             group = []
+            opened = True
         elif token == right:
             groups.append(klasse([r.__copy__() for r in group]))
             group = []
+            opened = False
         else:
             group.append(token)
 
-    groups.append([r.__copy__() for r in group])
+    if len(group) > 0:
+        groups.append([r.__copy__() for r in group])
+
     return groups
 
 
@@ -33,6 +39,8 @@ def split_by(splitter: Token, tokens: list[Token]):
             group = []
         else:
             group.append(token)
-    groups.append([r.__copy__() for r in group])
+
+    if len(group) > 0:
+        groups.append([r.__copy__() for r in group])
 
     return groups
