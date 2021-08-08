@@ -6,13 +6,13 @@ with open(path.join(this_directory, "README.md"), encoding="utf-8") as f:
 
 setuptools.setup(
     name="YAPI-heureka-code",
-    version="1.0.0",
+    version="1.1.0",
     author="heureka-code",
     long_description=long_description,
     long_description_content_type="text/markdown",
     license="MIT",
     description="Moeglichkeit eine kleine API mit Lexer zu erstellen",
     url="https://github.com/heureka-code/YAPI-heureka-code",
-    download_url="https://github.com/heureka-code/YAPI-heureka-code/archive/refs/tags/1.0.0.tar.gz",
+    download_url="https://github.com/heureka-code/YAPI-heureka-code/archive/refs/tags/1.1.0.tar.gz",
     packages=setuptools.find_packages()
     )
