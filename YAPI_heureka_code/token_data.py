@@ -106,6 +106,9 @@ class STRING(Token):
     def __init__(self, value):
         super(STRING, self).__init__(str(value))
         pass
+
+    def __copy__(self):
+        return STRING(self.extern_value)
     pass
 
 
@@ -115,4 +118,7 @@ class LEER(Token):
 
     def __repr__(self):
         return "<LEER>"
+
+    def __copy__(self):
+        return LEER()
     pass
