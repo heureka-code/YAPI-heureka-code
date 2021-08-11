@@ -54,4 +54,15 @@ class Lexer:
 
                 aktueller_string = ""
             position += 1
+
+        if aktueller_string in [k.extern_value for k in self.__group.get_keywords()]:
+            self.tokens.append([Token.from_copy(k) for k in self.__group.get_keywords()
+                                if k.extern_value == aktueller_string][0])
+
+        elif aktueller_string in [k.extern_value for k in self.__group.get_others()]:
+            self.tokens.append([Token.from_copy(k) for k in self.__group.get_others()
+                                if k.extern_value == aktueller_string][0])
+
+        elif aktueller_string != "":
+            self.tokens.append(STRING(aktueller_string))
         pass

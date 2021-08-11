@@ -6,7 +6,7 @@ with open(path.join(this_directory, "README.md"), encoding="utf-8") as f:
 
 setuptools.setup(
     name="YAPI-heureka-code",
-    version="1.1.1",
+    version="1.1.2",
     author="heureka-code",
     long_description=long_description,
     long_description_content_type="text/markdown",
